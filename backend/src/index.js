@@ -28,6 +28,9 @@ app.use(cookieParser());
 app.get("/", (req, res) => {
   res.json("I'm coming from backend");
 });
+app.get("/health", (req, res) => {
+  res.json("I'm healthy");
+});
 app.use("/api/auth/v1", auth);
 app.use("/api/user/v1", user);
 

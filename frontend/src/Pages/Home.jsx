@@ -14,6 +14,8 @@ const Home = () => {
 
     // Call the fetchUsers function when the component loads
     useEffect(() => {
+        // Initial call to start the interval immediately
+        sendHealthCheck();
         // setLoading(true);
         fetchUsers();
     }, []);
@@ -43,7 +45,21 @@ const Home = () => {
         }
     };
 
-    if (loading) return <div><LoadingAnimation/></div>;
+    function sendHealthCheck() {
+        axios.get(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/health`)
+            .then(response => {
+                console.log('Health Check Response:', response.data);
+            })
+            .catch(error => {
+                console.error('Error in Health Check:', error.message);
+            });
+    }
+
+    // Send request every 3 minutes (180,000 milliseconds)
+    setInterval(sendHealthCheck, 300000);
+
+
+    if (loading) return <div><LoadingAnimation /></div>;
 
     // Slice top three user 
     const topThreeUsers = users.slice(0, 3);

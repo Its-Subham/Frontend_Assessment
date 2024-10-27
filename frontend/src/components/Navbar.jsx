@@ -9,7 +9,7 @@ import axios from 'axios';
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-    const { username, userId, token, isLoggedIn, setIsLoggedIn, setuserName } = useContext(UserContext);
+    const { username, isLoggedIn, setIsLoggedIn, setuserName } = useContext(UserContext);
     const [menuOpen, setMenuOpen] = useState(false);
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [userDetailsData, setUserDetailsData] = useState(null);
@@ -121,7 +121,7 @@ const Navbar = () => {
                         </button>
                         <button
                             onClick={() => navigate('/registration')}
-                            className="bg-white text-blue-600 w-24 h-10 px-4 py-2 rounded hover:bg-gray-100 transition"
+                            className="bg-white text-blue-600 w-24 h-10 px-4 py-2 rounded hover:bg-gray-100 transition hidden md:block"
                         >
                             Sign Up
                         </button>

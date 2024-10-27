@@ -4,6 +4,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import LoadingAnimation from '../components/LoadingAnimation ';
+import { ToastContainer } from 'react-toastify';
 
 const Registration = () => {
     const [showPassword, setShowPassword] = useState(false);
@@ -106,6 +107,7 @@ const Registration = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }

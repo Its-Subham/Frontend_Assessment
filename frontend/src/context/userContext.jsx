@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "react-toastify";
 
 
 export const UserContext = createContext(null);
@@ -46,7 +47,17 @@ const UserContextProvider = ({ children }) => {
                 setLoading(false);
             }, 2000);
         } catch (error) {
-            console.log(error.response ? error.response.data : error.message); // More detailed error
+            const errorMessage = error.response ? error.response.data.message : error.message;
+            toast.error(errorMessage, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 
@@ -75,7 +86,17 @@ const UserContextProvider = ({ children }) => {
                 setLoading(false);  // Stop loading animation after redirect
             }, 2000);
         } catch (error) {
-            console.log(error.response ? error.response.data : error.message);
+            const errorMessage = error.response ? error.response.data.message : error.message;
+            toast.error(errorMessage, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
         }
     };
 

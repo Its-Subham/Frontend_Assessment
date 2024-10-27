@@ -4,6 +4,8 @@ import { IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/userContext';
 import LoadingAnimation from '../components/LoadingAnimation ';
+import { ToastContainer } from 'react-toastify';
+
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { username, password, loading, setuserName, setPassword, userLogin, setLoading } = useContext(UserContext);
@@ -73,6 +75,7 @@ const Login = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 }
